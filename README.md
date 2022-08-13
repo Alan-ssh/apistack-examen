@@ -10,6 +10,7 @@ mediante un motor de plantillas.
  - Thymeleaf: Motor de renderizado de plantillas.
  - H2: Base de datos en memoria volátil.  
  - JPA: API de persistencia de Java.
+ - Swagger 3.0.0: Documentación de rutas REST
 
 
 ## Rutas API
