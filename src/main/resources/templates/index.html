@@ -78,7 +78,7 @@
                             <ul class="pagination">
                                 <li th:class="${currentPage == 1} ? 'page-item disabled' : 'page-item'">
                                     <a class="page-link"
-                                       th:if="${currentPage > 1}"
+                                       th:if="${currentPage >= 1}"
                                        th:href="@{'/page/1?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
                                         &laquo;
                                     </a>
@@ -86,7 +86,7 @@
                                 </li>
                                 <li th:class="${currentPage == 1} ? 'page-item disabled' : 'page-item'">
                                     <a class="page-link"
-                                       th:if="${currentPage > 1}"
+                                       th:if="${currentPage >= 1}"
                                        th:href="@{'/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
                                         &larr;
                                     </a>
@@ -95,7 +95,7 @@
                                 <li th:class="${currentPage == i} ? 'page-item active' : 'page-item'"
                                     th:each="i: ${#numbers.sequence(1, totalPages)}">
                                     <a class="page-link"
-                                       th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
+                                       th:href="${currentPage != i} ? @{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}} : ''">
                                         [[${i}]]
                                     </a>
                                     <!-- th:if="${currentPage != i}"
@@ -103,7 +103,7 @@
                                 </li>
                                 <li th:class="${currentPage == totalPages} ? 'page-item disabled' : 'page-item'">
                                     <a class="page-link"
-                                       th:if="${currentPage < totalPages}"
+                                       th:if="${currentPage <= totalPages}"
                                        th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
                                         &rarr;
                                     </a>
@@ -111,7 +111,7 @@
                                 </li>
                                 <li th:class="${currentPage == totalPages} ? 'page-item disabled' : 'page-item'">
                                     <a class="page-link"
-                                       th:if="${currentPage < totalPages}"
+                                       th:if="${currentPage <= totalPages}"
                                        th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
                                         &raquo;
                                     </a>
